@@ -1,0 +1,9 @@
+root = true
+
+[*.bat]
+end_of_line = crlf
+
+[*.{js,jsx}]
+charset = utf-8
+indent_style = space
+indent_size = 4

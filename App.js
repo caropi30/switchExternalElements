@@ -1,11 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
+import { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import HomeScreen from './src/container/HomeScreen';
+import ProductScreen from './src/container/ProductScreen';
+import labels from './src/constants/labels';
+import React from 'react';
+import useData from './src/hooks/useData';
+
+const { CATEGORIES } = labels; 
 
 export default function App() {
+  const {handleCategory} = useData();
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <HomeScreen title='HOME' data={CATEGORIES} cardOnPress={handleCategory} />
     </View>
   );
 }
