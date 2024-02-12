@@ -5,12 +5,13 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
     data: PropTypes.array.isRequired,
+    cardOnPress: PropTypes.func.isRequired,
 }
-const CardList = ({data}) => {
+const CardList = ({data, cardOnPress}) => {
     return (
         <FlatList 
             data={data}
-            renderItem={({item}) => <Card title={item.title} id={item.id} cardOnPress={() => cardOnPress} />}
+            renderItem={({item}) => <Card  title={item.title} id={item.id} cardOnPress={cardOnPress} />}
             keyExtractor={item => item.id}
         />
     );

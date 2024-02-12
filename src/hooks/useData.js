@@ -1,19 +1,39 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import labels from "../constants/labels";
 
-const {CATEGORIES} = labels;
+const { PRODUCTS } = labels;
 const useData = () => {
-    const [ product, setProduct ] = useState({})
-    const [ productList, setProductList ] = useState([])
-    const [ category, setCategory] = useState({})
-    const [ categoryList, setCategoryList ] = useState([])
-    const [ quantity, setQuantity ] = useState(1)
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [filteredProductList, setFilteredProductList] = useState([]);
+  
+    const handleSelectedCategory = (category) => {
+      setSelectedCategory(category)
+    };
+  
+    const handleFilterProductList = () => {
+      setFilteredProductList(PRODUCTS.filter(product => product.category === selectedCategory));
+    };
+  
+    const handleProductList = () => {
+      console.log('click')
+    };
+  
+    const handleCategoryGoBack = () =>{
+      setSelectedCategory('');
+    };
+  
+    useEffect(()=> {
+      handleFilterProductList()
+    }, [selectedCategory])
 
-    const handleCategory = (id) => {
-        console.log('click en id ', id)
-    }
-
-    return { categoryList, handleCategory}
+    return {
+        selectedCategory, 
+        filteredProductList, 
+        handleSelectedCategory, 
+        handleFilterProductList, 
+        handleProductList, 
+        handleCategoryGoBack
+    };
 };
 
 export default useData;

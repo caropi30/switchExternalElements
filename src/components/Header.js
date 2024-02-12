@@ -1,16 +1,17 @@
 import React from "react";
 import {View, Text,  StyleSheet, Pressable} from 'react-native';
+import { AntDesign } from "@expo/vector-icons";
+import Ionicons from '@expo/vector-icons/Ionicons';
 import labels from "../constants/labels";
 import colors from "../constants/colors";
 
 
-const {HEADER: {BTN_BACK}} = labels;
-const {PINK} = colors;
+const {PINK, DARK_PURPLE, BLACK} = colors;
 const Header = ({ title, goBack }) => {
     return (
         <View style={style.container}>
             <Pressable  style={style.btnBack} onPress={goBack}>
-                <Text>{BTN_BACK}</Text>            
+                <Ionicons name="chevron-back-sharp" size={24} color={BLACK} />        
             </Pressable>
             <Text style={style.title} >{title}</Text>
         </View>
@@ -27,11 +28,13 @@ const style = StyleSheet.create({
         backgroundColor: PINK,
     },
     btnBack: {
-        width: '10%',
+        width: '5%',
     },
     title: {
-        width: '90%',
-        textAlign: 'center'
+        width: '95%',
+        textAlign: 'center',
+        fontSize: 20,
+        
     }
 });
 

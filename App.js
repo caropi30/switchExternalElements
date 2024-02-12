@@ -1,19 +1,22 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import HomeScreen from './src/container/HomeScreen';
 import ProductScreen from './src/container/ProductScreen';
 import labels from './src/constants/labels';
-import React from 'react';
 import useData from './src/hooks/useData';
 
 const { CATEGORIES } = labels; 
 
 export default function App() {
-  const {handleCategory} = useData();
+  const {selectedCategory, filteredProductList, handleSelectedCategory,handleProductList,handleCategoryGoBack} = useData();
 
   return (
     <View style={styles.container}>
-      <HomeScreen title='HOME' data={CATEGORIES} cardOnPress={handleCategory} />
+      {!selectedCategory ? 
+            <HomeScreen title='HOME' cardOnPress={handleSelectedCategory} data={CATEGORIES} />  
+            :
+            <ProductScreen title={selectedCategory} goBack={handleCategoryGoBack} data={filteredProductList} cardOnPress={handleProductList}/>
+      }
     </View>
   );
 }

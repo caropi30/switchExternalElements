@@ -9,7 +9,7 @@ const HomeScreen = ({ title, data, cardOnPress }) =>{
     return (
         <View style={style.container}>
             <Header title={title} />
-            <CardList data={data} cardOnPress={cardOnPress}/>
+            <CardList data={data} cardOnPress={cardOnPress} />
         </View>
     );
 

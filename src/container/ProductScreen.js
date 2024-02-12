@@ -3,11 +3,11 @@ import Header from "../components/Header";
 import CardList from "../components/CardList";
 
 
-const ProductScreen = ({title, data}) =>{
+const ProductScreen = ({title, goBack, data, cardOnPress}) =>{
     return (
         <>   
-            <Header title={title}/>
-            {/* <CardList data={data} /> */}
+            <Header title={title} goBack={goBack}/>
+            <CardList data={data} cardOnPress={cardOnPress}/>
         </>
     );
 };

@@ -9,9 +9,9 @@ const propTypes = {
 }
 
 const { BLACK, LIGHT_PURPLE} = colors;
-const Card = ({title, cardOnPress}) => {
+const Card = ({title, cardOnPress, id}) => {
     return(
-        <TouchableOpacity onPress={cardOnPress} style={style.container} key={id}>
+        <TouchableOpacity key={id} onPress={() => cardOnPress(title)} style={style.container}>
             <Text style={style.title}>{title}</Text>
         </TouchableOpacity>
     )
