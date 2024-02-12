@@ -2,11 +2,12 @@ const POLLO = 'Pollo'
 const CARNE = 'Carne'
 const VEGETARIANAS = 'Vegetarianas'
 const MIXTAS = 'Mixtas';
+const HOME = 'Home';
 
 const labels = {
     HEADER: {
         BTN_BACK: 'Volver',
-        TITLE: 'Header',
+        TITLE: HOME,
     },
     CATEGORIES: [{
             id: POLLO,

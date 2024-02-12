@@ -1,17 +1,20 @@
 import React from "react";
 import {View, Text,  StyleSheet, Pressable} from 'react-native';
-import { AntDesign } from "@expo/vector-icons";
 import Ionicons from '@expo/vector-icons/Ionicons';
-import labels from "../constants/labels";
 import colors from "../constants/colors";
+import useFont from "../hooks/useFont";
+import labels from "../constants/labels";
 
-
-const {PINK, DARK_PURPLE, BLACK} = colors;
+const { PINK, BLACK} = colors;
+const { HEADER: {TITLE} } = labels;
 const Header = ({ title, goBack }) => {
+    const {fontsLoaded} = useFont();
+    console.log('fontsLoaded', fontsLoaded)
+
     return (
         <View style={style.container}>
             <Pressable  style={style.btnBack} onPress={goBack}>
-                <Ionicons name="chevron-back-sharp" size={24} color={BLACK} />        
+                {title !== TITLE ? <Ionicons name="chevron-back-sharp" size={24} color={BLACK} />  : null}      
             </Pressable>
             <Text style={style.title} >{title}</Text>
         </View>
@@ -33,8 +36,10 @@ const style = StyleSheet.create({
     title: {
         width: '95%',
         textAlign: 'center',
+        fontFamily: 'Montserrat-VariableFont',
+        fontWeight: 700,
         fontSize: 20,
-        
+        color: BLACK,        
     }
 });
 
