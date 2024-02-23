@@ -11,11 +11,19 @@ const propTypes = {
 }
 
 const { BLACK, LIGHT_PURPLE } = colors;
+<<<<<<< HEAD
 const Card = ({ title, cardOnPress, id, category }) => {
     const { fontsLoaded } = useFont();
 
     const handleData = () => {
         cardOnPress({ title, id, category });
+=======
+const Card = ({ item, title, cardOnPress, id, setSelection, selection, goTo }) => {
+    const { fontsLoaded } = useFont();
+    const handleData = () => {
+        setSelection(title);
+        goTo();
+>>>>>>> 57c1cc1fe556816f221d010fef0064dd97e7ab37
     };
 
     return (
