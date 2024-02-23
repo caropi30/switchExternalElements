@@ -1,24 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import Header from "../components/Header";
+import { useNavigation } from "@react-navigation/native";
 import CardList from "../components/CardList";
 import colors from "../constants/colors";
+import labels from "../constants/labels";
+import useData from "../hooks/useData";
 
 const { LIGHT_BLUE } = colors;
-const HomeScreen = ({ title, data, cardOnPress }) =>{
+
+const { CATEGORIES } = labels
+
+const HomeScreen = () => {
+    const [category, setCategory] = useState('');
+    const navigation = useNavigation();
+
     return (
         <View style={style.container}>
-            <Header title={title} />
-            <CardList data={data} cardOnPress={cardOnPress} />
-        </View>
+            <CardList data={CATEGORIES}
+                setSelection={setCategory}
+                screen='ProductScreen'
+                goTo={() => navigation.navigate('ProductScreen', { screen: 'ProductScreen', category: category })}
+            />
+        </View >
     );
 
 };
 const style = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: LIGHT_BLUE, 
-        alignItems: 'center', 
+        backgroundColor: LIGHT_BLUE,
+        alignItems: 'center',
+        paddingTop: 50,
     }
 })
 

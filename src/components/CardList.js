@@ -7,11 +7,19 @@ const propTypes = {
     data: PropTypes.array.isRequired,
     cardOnPress: PropTypes.func.isRequired,
 }
-const CardList = ({data, cardOnPress}) => {
+const CardList = ({ data, cardOnPress, setSelection, screen, goTo }) => {
     return (
-        <FlatList 
+        <FlatList
             data={data}
-            renderItem={({item}) => <Card  title={item.title} id={item.id} cardOnPress={cardOnPress} />}
+            renderItem={({ item }) => 
+                <Card 
+                    title={item.title} 
+                    id={item.id} 
+                    category={item.category} 
+                    cardOnPress={cardOnPress} 
+                    screen={screen} 
+                    setSelection={setSelection} goTo={goTo} 
+                />}
             keyExtractor={item => item.id}
         />
     );

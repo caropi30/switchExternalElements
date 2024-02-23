@@ -5,34 +5,42 @@ const { PRODUCTS } = labels;
 const useData = () => {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [filteredProductList, setFilteredProductList] = useState([]);
-  
+    const [selectedProduct, setSelectedProduct] = useState({});
+
     const handleSelectedCategory = (category) => {
-      setSelectedCategory(category)
+        setSelectedCategory(category)
     };
-  
-    const handleFilterProductList = () => {
-      setFilteredProductList(PRODUCTS.filter(product => product.category === selectedCategory));
+
+    const handleProduct = (product) => {
+        setSelectedProduct(product)
     };
-  
+
+    const handleFilterProductList = (category) => {
+        setFilteredProductList(PRODUCTS.filter(product => product.category === selectedCategory));
+    };
+
     const handleProductList = () => {
-      console.log('click')
+        console.log('click')
     };
-  
-    const handleCategoryGoBack = () =>{
-      setSelectedCategory('');
+
+    const handleCategoryGoBack = () => {
+        setSelectedCategory('');
     };
-  
-    useEffect(()=> {
-      handleFilterProductList()
+
+    useEffect(() => {
+        handleFilterProductList()
     }, [selectedCategory])
 
     return {
-        selectedCategory, 
-        filteredProductList, 
-        handleSelectedCategory, 
-        handleFilterProductList, 
-        handleProductList, 
-        handleCategoryGoBack
+        selectedCategory,
+        selectedProduct,
+        filteredProductList,
+        setFilteredProductList,
+        handleSelectedCategory,
+        handleFilterProductList,
+        handleProductList,
+        handleCategoryGoBack,
+        handleProduct,
     };
 };
 
