@@ -20,11 +20,7 @@ const ProductScreen = () => {
             <CardList
                 data={PRODUCTS.filter(product => product.category === category)}
                 setSelection={setProduct}
-<<<<<<< HEAD
                 cardOnPress={({ title }) => navigation.navigate('DetailScreen', { screen: 'DetailScreen', product: title })}
-=======
-                goTo={() => navigation.navigate('DetailScreen', { screen: 'DetailScreen', product: product })}
->>>>>>> 57c1cc1fe556816f221d010fef0064dd97e7ab37
             />
         </View>
     );
