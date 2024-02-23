@@ -1,19 +1,25 @@
 import React from "react";
-import { Text, StyleSheet, View, TouchableOpacity} from "react-native";  
+import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 import PropTypes from 'prop-types';
 import colors from "../constants/colors";
 import useFont from "../hooks/useFont";
+import { useNavigation } from "@react-navigation/native";
 
 const propTypes = {
     title: PropTypes.string.isRequired,
     cardOnPress: PropTypes.func.isRequired,
 }
 
-const { BLACK, LIGHT_PURPLE} = colors;
-const Card = ({title, cardOnPress, id}) => {
-    const {fontsLoaded} = useFont();
-    return(
-        <TouchableOpacity key={id} onPress={() => cardOnPress(title)} style={style.container}>
+const { BLACK, LIGHT_PURPLE } = colors;
+const Card = ({ title, cardOnPress, id, category }) => {
+    const { fontsLoaded } = useFont();
+
+    const handleData = () => {
+        cardOnPress({ title, id, category });
+    };
+
+    return (
+        <TouchableOpacity key={id} onPress={() => handleData()} style={style.container}>
             <Text style={style.title}>{title}</Text>
         </TouchableOpacity>
     )
@@ -29,7 +35,7 @@ const style = StyleSheet.create({
         marginVertical: 15
 
     },
-    title:{
+    title: {
         color: BLACK,
         textAlign: 'center',
         fontFamily: 'Montserrat-VariableFont',
