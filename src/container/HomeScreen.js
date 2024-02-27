@@ -1,25 +1,28 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import React from "react";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { useRoute } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
-import CardList from "../components/CardList";
+import CategoryScreen from "./CategoryScreen";
 import colors from "../constants/colors";
-import labels from "../constants/labels";
 
-const { LIGHT_BLUE } = colors;
 
-const { CATEGORIES } = labels
+const { BLACK, WHITE, LIGHT_BLUE } = colors;
 
 const HomeScreen = () => {
-    const [category, setCategory] = useState('');
+    const route = useRoute();
     const navigation = useNavigation();
+    console.log('home')
+
+    // const handleGoBack = ({ title }) => {
+    //      navigation.navigate('Category', { screen: 'CategoryScreen', })
+    // };
 
     return (
         <View style={style.container}>
-            <CardList data={CATEGORIES}
-                setSelection={setCategory}
-                screen='ProductScreen'
-                cardOnPress={({ title }) => navigation.navigate('ProductScreen', { screen: 'ProductScreen', category: title })}
-            />
+           <Text style={style.txt}>HomeScreen</Text>
+            {/* <TouchableOpacity style={style.btn}onPress={handleGoBack}>
+                <Text style={style.txt}>Ir a categoríq</Text>
+            </TouchableOpacity> */}
         </View >
     );
 
@@ -27,9 +30,15 @@ const HomeScreen = () => {
 const style = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: LIGHT_BLUE,
+        backgroundColor: BLACK,
         alignItems: 'center',
-        paddingTop: 50,
+    },
+    txt: {
+        color: WHITE,
+    },
+    btn:{
+        backgroundColor: LIGHT_BLUE,
+        padding: 10,
     }
 })
 

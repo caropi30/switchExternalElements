@@ -22,7 +22,7 @@ const style = StyleSheet.create({
     },
     txt: {
         fontSize: 30,
-        fontWeight: 600,
+        fontWeight: '600',
         color: WHITE,
         fontFamily: 'Montserrat-VariableFont'
     }

@@ -15,7 +15,7 @@ const Card = ({ title, cardOnPress, id, category }) => {
     const { fontsLoaded } = useFont();
 
     const handleData = () => {
-        cardOnPress({ title, id, category });
+        cardOnPress({ title });
     };
 
     return (
@@ -40,7 +40,7 @@ const style = StyleSheet.create({
         textAlign: 'center',
         fontFamily: 'Montserrat-VariableFont',
         fontSize: 17,
-        fontWeight: 500,
+        fontWeight: '500',
     }
 });
 

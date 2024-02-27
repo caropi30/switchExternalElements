@@ -37,7 +37,7 @@ const style = StyleSheet.create({
         width: '95%',
         textAlign: 'center',
         fontFamily: 'Montserrat-VariableFont',
-        fontWeight: 700,
+        fontWeight: '700',
         fontSize: 20,
         color: BLACK,        
     }
