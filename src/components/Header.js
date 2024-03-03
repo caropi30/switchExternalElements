@@ -1,46 +1,37 @@
-import React from "react";
-import {View, Text,  StyleSheet, Pressable} from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import colors from "../constants/colors";
-import useFont from "../hooks/useFont";
-import labels from "../constants/labels";
+import colors from '../constants/colors';
 
-const { PINK, BLACK} = colors;
-const { HEADER: {TITLE} } = labels;
-const Header = ({ title, goBack }) => {
-    const {fontsLoaded} = useFont();
-    console.log('fontsLoaded', fontsLoaded)
+const { BLACK } = colors;
 
-    return (
-        <View style={style.container}>
-            <Pressable  style={style.btnBack} onPress={goBack}>
-                {title !== TITLE ? <Ionicons name="chevron-back-sharp" size={24} color={BLACK} />  : null}      
-            </Pressable>
-            <Text style={style.title} >{title}</Text>
-        </View>
-    )
-};
-
-const style = StyleSheet.create({
-    container: {
-        width: '100%',
-        height: 70,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: PINK,
-    },
-    btnBack: {
-        width: '5%',
-    },
-    title: {
-        width: '95%',
-        textAlign: 'center',
-        fontFamily: 'Montserrat-VariableFont',
-        fontWeight: '700',
-        fontSize: 20,
-        color: BLACK,        
-    }
-});
+const Header = () => (
+    <View style={styles.container}>
+        <Ionicons name="chevron-back" size={28} color={BLACK} style={styles.icon} />
+    </View>
+);
 
 export default Header;
+
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'baseline',
+        backgroundColor: 'lightblue',
+        width: '100%',
+        paddingTop: 40,
+        paddingBottom: 10,
+        paddingHorizontal: 10,
+    },
+    txt: {
+        color: 'white',
+        fontSize: 15,
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+        letterSpacing: 2,
+        textAlign: 'center',
+        paddingTop: 30,
+    },
+    icon: {},
+});

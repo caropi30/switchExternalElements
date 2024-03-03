@@ -1,49 +1,43 @@
-import React from "react";
-import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
-import PropTypes from 'prop-types';
-import colors from "../constants/colors";
-import useFont from "../hooks/useFont";
-import { useNavigation } from "@react-navigation/native";
-
-const propTypes = {
-    title: PropTypes.string.isRequired,
-    cardOnPress: PropTypes.func.isRequired,
-}
+import React from 'react';
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import colors from '../constants/colors';
+import useFont from '../hooks/useFont';
 
 const { BLACK, LIGHT_PURPLE } = colors;
-const Card = ({ title, cardOnPress, id, category }) => {
+
+const Card = ({ id, category, nameProduct, itemTitle, cardOnPress }) => {
     const { fontsLoaded } = useFont();
 
     const handleData = () => {
-        cardOnPress({ title });
+        cardOnPress();
     };
 
     return (
-        <TouchableOpacity key={id} onPress={() => handleData()} style={style.container}>
-            <Text style={style.title}>{title}</Text>
+        <TouchableOpacity style={styles.container} key={id} onPress={handleData}>
+            {/* <Text style={styles.txt}>{id}</Text>
+            <Text style={styles.txt}>{category}</Text>
+            <Text style={styles.txt}>{nameProduct}</Text> */}
+            <Text style={styles.txt}>{itemTitle}</Text>
         </TouchableOpacity>
-    )
+    );
 };
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         height: 100,
         width: 300,
         backgroundColor: LIGHT_PURPLE,
         borderRadius: 7,
         justifyContent: 'center',
-        marginVertical: 15
-
+        marginVertical: 15,
     },
-    title: {
+    txt: {
         color: BLACK,
         textAlign: 'center',
-        fontFamily: 'Montserrat-VariableFont',
+        fontFamily: 'Montserrat-Medium',
         fontSize: 17,
         fontWeight: '500',
-    }
+    },
 });
 
-
-Card.propTypes;
 export default Card;

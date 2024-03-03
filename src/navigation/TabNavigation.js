@@ -1,32 +1,61 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '../container/CategoryScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import Feather from '@expo/vector-icons/Feather';
 import StackNavigation from './StackNavigation';
-import CartScreen from '../container/CartScreen';
+import CategoryScreen from '../containers/CategoryScreen';
+import CartScreen from '../containers/CartScreen';
+import Header from '../components/Header';
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
+    const renderHeader = () => <Header />;
+
+    const renderHomeIcon = () => <Ionicons name="home-outline" size={25} />;
+
+    const renderCategoryIcon = () => <MaterialIcons name="category" size={25} />;
+
+    const renderCartIcon = () => <Feather name="shopping-cart" size={25} />;
+
     return (
-        <NavigationContainer >
+        <NavigationContainer>
             <Tab.Navigator
-                 initialRouteName="Home"  
-                 screenOptions={{
-                     headerShown: false,
-               }}
+                screenOptions={{
+                    gestureEnabled: true,
+                    header: renderHeader,
+                }}
             >
-                {/* <Tab.Screen name="Home" component={HomeScreen} />
-                <Tab.Screen name="Product" component={ProductScreen} />
-                <Tab.Screen name="Detail" component={DetailScreen} />
-                <Tab.Screen name="Cart" component={CartScreen} /> */}
-                {/* <Tab.Screen name="Home" component={HomeScreen} /> */}
-                <Tab.Screen name="Category" component={StackNavigation}/>
-                <Tab.Screen name="Cart" component={CartScreen} />
+                <Tab.Screen
+                    name="HomeTab"
+                    component={StackNavigation}
+                    options={{
+                        header: () => null,
+                        title: 'Home',
+                        tabBarIcon: renderHomeIcon,
+                    }}
+                />
+                <Tab.Screen
+                    name="Category"
+                    component={CategoryScreen}
+                    options={{
+                        title: 'Category',
+                        tabBarIcon: renderCategoryIcon,
+                    }}
+                />
+                <Tab.Screen
+                    name="Cart"
+                    component={CartScreen}
+                    options={{
+                        title: 'Cart',
+                        tabBarIcon: renderCartIcon,
+                    }}
+                />
             </Tab.Navigator>
         </NavigationContainer>
-       
-      );
+    );
 };
 
 export default TabNavigation;

@@ -1,20 +1,14 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import useFont from './src/hooks/useFont';
-import StackNavigation from './src/navigation/StackNavigation';
+import 'react-native-gesture-handler';
 import TabNavigation from './src/navigation/TabNavigation';
+import { Provider } from 'react-redux';
+import { store } from './src/redux/store';
 
-
-export default function App() {
-    const { fontsLoaded } = useFont();
-    if (!fontsLoaded) {
-        return <Text>Cargando ...</Text>
-    }
-
+const App = () => {
     return (
-        <>
-            {/* <StackNavigation /> */}
+        <Provider store={store}>
             <TabNavigation />
-        </>
+        </Provider>
     );
 };
+
+export default App;

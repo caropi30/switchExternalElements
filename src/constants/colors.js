@@ -5,7 +5,7 @@ const colors = {
     DARK_PURPLE: '#B8C0FF',
     LIGHT_BLUE: '#C8B6FF',
     WHITE: '#FFF',
-    BLACK: '#000'
+    BLACK: '#000',
 };
 
 export default colors;
