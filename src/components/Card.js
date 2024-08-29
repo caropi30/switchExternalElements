@@ -5,6 +5,8 @@ import colors from "../constants/colors";
 import useFont from "../hooks/useFont";
 import { useNavigation } from "@react-navigation/native";
 
+//prueba
+
 const propTypes = {
     title: PropTypes.string.isRequired,
     cardOnPress: PropTypes.func.isRequired,
